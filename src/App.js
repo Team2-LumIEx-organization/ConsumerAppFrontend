@@ -1,6 +1,7 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 import SettingPage from "./pages/setting";
+import NewParcelPage from './pages/new-parcel'
 import LoginPage from "./pages/login/index";
 import RegisterPage from "./pages/register/index";
 import Navbar from "./components/navBar";
@@ -29,7 +30,7 @@ function App() {
       path: "/send-parcel",
       element: (
         <AuthRequired redirect="/login">
-          <></>
+        < NewParcelPage/>
           <Navbar />
         </AuthRequired>
       ),

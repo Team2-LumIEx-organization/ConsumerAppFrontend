@@ -1,6 +1,7 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 import SettingPage from "./pages/setting";
+import DashboardPage from './pages/dashboard/index'
 import NewParcelPage from './pages/new-parcel'
 import LoginPage from "./pages/login/index";
 import RegisterPage from "./pages/register/index";
@@ -21,7 +22,7 @@ function App() {
       path: "/dashboard",
       element: (
         <AuthRequired redirect="/login">
-          <></>
+          <DashboardPage />
           <Navbar />
         </AuthRequired>
       ),

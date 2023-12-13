@@ -4,9 +4,12 @@ import { AuthorizedBackground } from "../../components/base/common";
 import Tabs from "../../components/base/Tabs";
 import SentCard from "../../components/sent-card";
 import ReceivedCard from "../../components/recieved-card";
+import CardModal from "../../components/card-modal";
 
 const DashboardPage = () => {
   const [selectedTab, setSelectedTab] = useState(0);
+  const [cardModal, setCardModal] = useState(false);
+  const [selectedParcel, setSelectedParcel] = useState({});
   const {
     sentParcels,
     recivedParcels,
@@ -28,7 +31,14 @@ const DashboardPage = () => {
     getRecivedParcelsContext();
   }, []);
 
-  console.log("asdasd", sentParcels, recivedParcels);
+  const onParcelClick = (item) => {
+    setSelectedParcel(item);
+    toggleCardModal();
+  };
+
+  const toggleCardModal = () => {
+    setCardModal(!cardModal);
+  };
 
   return (
     <AuthorizedBackground>
@@ -50,20 +60,28 @@ const DashboardPage = () => {
         item={{
           name: "Parcel Name",
           delivery_status: "Delivery Status",
-          reciver: "Reciever",
+          reciver: { email: "email" },
         }}
         title={true}
       />
       {selectedTab === 0 &&
         sentParcels &&
         sentParcels.map((item) => {
-          return <SentCard item={item} />;
+          return <SentCard onClick={() => onParcelClick(item)} item={item} />;
         })}
       {selectedTab === 1 &&
         recivedParcels &&
         recivedParcels.map((item) => {
-          return <ReceivedCard item={item} />;
+          return (
+            <ReceivedCard onClick={() => onParcelClick(item)} item={item} />
+          );
         })}
+      <CardModal
+        open={cardModal}
+        toggle={toggleCardModal}
+        selectedParcel={selectedParcel}
+        selectedTab={selectedTab}
+      />
     </AuthorizedBackground>
   );
 };

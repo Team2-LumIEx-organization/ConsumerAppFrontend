@@ -1,20 +1,20 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
-import SettingPage from "./pages/setting";
 import DashboardPage from "./pages/dashboard/index";
 import NewParcelPage from "./pages/new-parcel";
+import SettingPage from "./pages/setting";
 import LoginPage from "./pages/login/index";
 import RegisterPage from "./pages/register/index";
 import Navbar from "./components/navBar";
 
 import { ThemeContextProvider } from "./context/themeContext";
-
-import AppProvider from "./AppProvider";
-
 import RedirectAuthorized from "./components/auth/redirect-authorized";
 import AuthRequired from "./components/auth/auth-required";
 
+import AppProvider from "./AppProvider";
+
 import Toaster from "./components/base/toaster";
+import Trucks from "./components/trucks";
 
 function App() {
   const router = createBrowserRouter([
@@ -67,6 +67,7 @@ function App() {
     <div className="App">
       <AppProvider>
         <ThemeContextProvider>
+          <Trucks />
           <RouterProvider router={router} />
           <Toaster />
         </ThemeContextProvider>

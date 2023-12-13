@@ -1,8 +1,8 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 import SettingPage from "./pages/setting";
-import DashboardPage from './pages/dashboard/index'
-import NewParcelPage from './pages/new-parcel'
+import DashboardPage from "./pages/dashboard/index";
+import NewParcelPage from "./pages/new-parcel";
 import LoginPage from "./pages/login/index";
 import RegisterPage from "./pages/register/index";
 import Navbar from "./components/navBar";
@@ -21,7 +21,7 @@ function App() {
     {
       path: "/dashboard",
       element: (
-        <AuthRequired redirect="/login">
+        <AuthRequired redirect="/">
           <DashboardPage />
           <Navbar />
         </AuthRequired>
@@ -30,8 +30,8 @@ function App() {
     {
       path: "/send-parcel",
       element: (
-        <AuthRequired redirect="/login">
-        < NewParcelPage/>
+        <AuthRequired redirect="/">
+          <NewParcelPage />
           <Navbar />
         </AuthRequired>
       ),
@@ -39,14 +39,14 @@ function App() {
     {
       path: "/setting",
       element: (
-        <AuthRequired redirect="/login">
+        <AuthRequired redirect="/">
           <SettingPage />
           <Navbar />
         </AuthRequired>
       ),
     },
     {
-      path: "/login",
+      path: "/",
       element: (
         <RedirectAuthorized redirect="/dashboard">
           <LoginPage />

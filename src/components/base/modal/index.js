@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import styled from "styled-components";
-import { ThemeContext } from "context/themeContext";
+import { ThemeContext } from "../../../context/themeContext";
 
 const StyledWrapper = styled.div`
   background-color: rgba(0, 0, 0, 0.7);

@@ -11,11 +11,15 @@ import toasterReducer, {
 import trucksReducer, {
   key as trucksKey,
 } from "./components/trucks/container/reducer";
+import navBarReducer, {
+  key as navBarKey,
+} from "./components/navBar/container/reducer";
 
 import LoginPerformances from "./pages/login/container/performances";
 import dashboardPerformances from "./pages/dashboard/container/performances";
 import ToasterPerformances from "./components/base/toaster/container/performances";
 import trucksPerformances from "./components/trucks/container/performances";
+import navBarPerformances from "./components/navBar/container/performances";
 
 import combineReducer from "./utils/combineReducer";
 
@@ -34,6 +38,9 @@ const AppProvider = (props) => {
     [trucksKey]: {
       page: "",
     },
+    [navBarKey]: {
+      notifications: [],
+    },
   };
 
   const rootReducer = combineReducer({
@@ -41,6 +48,7 @@ const AppProvider = (props) => {
     [dashboardKey]: dashboardReducer,
     [toasterKey]: toasterReducer,
     [trucksKey]: trucksReducer,
+    [navBarKey]: navBarReducer,
   });
   const [state, dispatch] = useReducer(rootReducer, initialValue);
 
@@ -61,6 +69,10 @@ const AppProvider = (props) => {
     [trucksKey]: {
       ...state[trucksKey],
       ...trucksPerformances(dispatch),
+    },
+    [navBarKey]: {
+      ...state[navBarKey],
+      ...navBarPerformances(dispatch),
     },
   };
 

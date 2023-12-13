@@ -31,6 +31,7 @@ const AppProvider = (props) => {
     [dashboardKey]: {
       sentParcels: [],
       recivedParcels: [],
+      locations: [],
     },
     [toasterKey]: {
       toasterMessages: [],

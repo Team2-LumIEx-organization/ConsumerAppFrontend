@@ -33,7 +33,7 @@ const CloseWrapper = styled.div`
 const StyledContentWrapper = styled.div`
   background-color: ${(props) => props.theme.primaryBackground};
   position: relative;
-  width: 39.979vw;
+  width: 700px;
   margin: auto;
   margin-top: ${(props) =>
     props.yesNoDialog
@@ -41,12 +41,12 @@ const StyledContentWrapper = styled.div`
         ? "15vw"
         : "5vw"
       : props.open
-      ? "5vw"
-      : "-5vw"};
-  margin-bottom: 5vw;
+      ? "150px"
+      : "-50px"};
+  margin-bottom: 20px;
   z-index: 101;
   transition: margin 200ms ease-in-out;
-  border-radius: 2.08vw;
+  border-radius: 40px;
 `;
 
 const Modal = (props) => {
@@ -58,7 +58,11 @@ const Modal = (props) => {
   };
   return (
     <StyledWrapper theme={theme} open={open} data-testid="modal-wrapper">
-      <CloseWrapper open={open} onClick={onWrapperClick} />
+      <CloseWrapper
+        data-testid="close-wrapper"
+        open={open}
+        onClick={onWrapperClick}
+      />
       <StyledContentWrapper theme={theme} open={open} yesNoDialog={yesNoDialog}>
         {props.children}
       </StyledContentWrapper>

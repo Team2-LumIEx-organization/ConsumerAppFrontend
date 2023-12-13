@@ -141,11 +141,11 @@ function Navbar() {
           type="secondary"
         />
       </SideWrapper>
-      {/* <NotificationModal
+      <NotificationModal
         open={openNotificationModal}
         toggle={toggleNotificationModal}
         notifications={notifications}
-      /> */}
+      />
     </NavWrapper>
   );
 }

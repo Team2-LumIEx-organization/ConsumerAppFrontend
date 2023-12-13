@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { AuthorizedBackground } from "../../components/base/common";
 import Button from "../../components/base/button";
 import MainContext from "../../MainContext";
